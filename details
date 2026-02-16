@@ -1,0 +1,4 @@
+Built an Excel-based tracker for trade status, breaks, and exception queues; automated refresh using Power Query
+and created pivot views by counterparty/product/date.
+• Implemented SQL/Python checks for mismatched records and missing fields; reduced manual break investigation
+time by 35% and improved books-and-records consistency.
