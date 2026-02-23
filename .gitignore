@@ -1,0 +1,30 @@
+﻿# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Node (if we add a small web demo later)
+node_modules/
+dist/
+build/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Excel / Office temp files
+~$*.xlsx
+~$*.xlsm
+~$*.xls
+*.tmp
+
+# Outputs
+outputs/
+reports/
