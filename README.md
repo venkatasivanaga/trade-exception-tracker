@@ -31,6 +31,7 @@ See [`docs/setup.md`](docs/setup.md).
 ## Documentation
 - Setup: [`docs/setup.md`](docs/setup.md)
 - Data dictionary: [`docs/data_dictionary.md`](docs/data_dictionary.md)
+- Power Query walkthrough: [`docs/power_query.md`](docs/power_query.md)
 
 ## Tech
 Excel • Power Query • SQL • Python
