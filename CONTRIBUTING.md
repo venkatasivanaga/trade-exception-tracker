@@ -1,4 +1,4 @@
-\# Contributing
+# Contributing
 
 
 
@@ -52,6 +52,12 @@ refactor: code restructuring
 test: CI/tests
 
 chore: repo maintenance
+
+
+## Naming & hygiene
+- Keep demo data anonymized
+- Track generated sample outputs under `docs/sample-output/`
+- Avoid committing secrets (see `.gitignore`)
 
 
 Commit + push:
