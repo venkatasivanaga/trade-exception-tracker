@@ -1,0 +1,18 @@
+# Normalize line endings in repo
+* text=auto
+
+# Keep Windows scripts with CRLF
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+
+# Shell scripts should be LF
+*.sh text eol=lf
+
+# Data files as text (fine either way)
+*.csv text
+
+# Markdown and configs as LF
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.sql text eol=lf
