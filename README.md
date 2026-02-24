@@ -39,5 +39,9 @@ See [`docs/setup.md`](docs/setup.md).
 ## Tech
 Excel • Power Query • SQL • Python
 
+## Live demo (GitHub Pages)
+https://venkatasivanaga.github.io/trade-exception-tracker/
+
+
 ## License
 MIT
