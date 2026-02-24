@@ -13,10 +13,27 @@ Run the validator to generate a demo summary:
 
 
 ```powershell
+```powershell
+conda run -n orcd python python/validate.py --trades data/trades.csv --exceptions data/exceptions.csv --out docs/sample-output/summary.md
+
 
 conda run -n orcd python python\\validate.py
 
 
+Save.
+
+### 3) Create `python/README.md`
+```powershell
+notepad python\README.md
+
+# Validator Tool
+
+`validate.py` generates a markdown summary of break and exception activity from CSV inputs.
+
+## Usage (Windows PowerShell)
+
+```powershell
+conda run -n orcd python python/validate.py --trades data/trades.csv --exceptions data/exceptions.csv --out docs/sample-output/summary.md
 
 Output:
 
@@ -32,6 +49,15 @@ Excel / Power Query demo (recommended)
 
 You can build an Excel tracker on top of the demo CSVs:
 
+
+
+Save.
+
+### 4) Commit + push
+```powershell
+git add docs\setup.md python\README.md
+git commit -m "docs: document validator CLI usage"
+git push
 
 
 Open Excel and create a new workbook.
