@@ -135,11 +135,23 @@ def parse_args():
     p.add_argument("--out", type=Path, default=DEFAULT_OUT, help="Output markdown path")
     return p.parse_args()
 
+def write_exceptions_by_type_csv(out_path: Path, exceptions: List[Row]) -> Path:
+    out_csv = out_path.parent / "exceptions_by_type.csv"
+    ex_by_type = Counter(normalize_value(e.get("exception_type")) or "UNKNOWN" for e in exceptions)
+
+    rows = sorted(ex_by_type.items(), key=lambda x: (-x[1], x[0]))
+    with out_csv.open("w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(["exception_type", "count"])
+        w.writerows(rows)
+
+    return out_csv
+
 def main():
     args = parse_args()
     trades = read_csv(args.trades)
     exceptions = read_csv(args.exceptions)
-    
+
     kpis, breakdown = compute_kpis(trades, exceptions)
     lines = build_report_lines(trades, exceptions, kpis, breakdown)
 
@@ -218,6 +230,9 @@ def main():
 
     args.out.write_text("".join(lines), encoding="utf-8")
     print(f"Wrote report: {args.out}")
+
+    csv_path = write_exceptions_by_type_csv(args.out, exceptions)
+    print(f"Wrote CSV: {csv_path}")
 
 if __name__ == "__main__":
     main()

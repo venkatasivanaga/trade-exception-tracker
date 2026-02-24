@@ -1,0 +1,5 @@
+exception_type,count
+MissingField,2
+CurrencyMismatch,1
+NotionalMismatch,1
+StatusMismatch,1
