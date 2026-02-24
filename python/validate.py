@@ -157,7 +157,6 @@ def main():
 
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text("".join(lines), encoding="utf-8")
-    print(f"Wrote report: {args.out}")
 
     total_trades = len(trades)
     break_trades = [t for t in trades if normalize_value(t.get("trade_status")) == "Break"]             
