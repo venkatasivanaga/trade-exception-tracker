@@ -14,18 +14,30 @@ REQUIRED_TRADE_FIELDS = [
 ]
 
 def read_csv(path: Path):
-    with path.open(newline="", encoding="utf-8") as f:
-        return list(csv.DictReader(f))
+    with path.open(newline="", encoding="utf-8-sig") as f:
+        reader = csv.DictReader(f)
+        reader.fieldnames = [normalize_key(h) for h in (reader.fieldnames or [])]
+        rows = []
+        for row in reader:
+            rows.append({normalize_key(k): v for k, v in row.items()})
+        return rows
 
-def is_missing(v):
-    return v is None or str(v).strip() == ""
+def normalize_key(k: str) -> str:
+    # Handles UTF-8 BOM and weird leading/trailing whitespace in headers
+    return (k or "").replace("\ufeff", "").strip()
+
+def normalize_value(v) -> str:
+    return "" if v is None else str(v).strip()
+
+def is_missing(v) -> bool:
+    return normalize_value(v) == ""
 
 def main():
     trades = read_csv(TRADES_CSV)
     exceptions = read_csv(EXCEPTIONS_CSV)
 
     total_trades = len(trades)
-    break_trades = [t for t in trades if (t.get("trade_status") or "").strip() == "Break"]
+    break_trades = [t for t in trades if normalize_value(t.get("trade_status")) == "Break"]             
     break_rate = (len(break_trades) / total_trades * 100) if total_trades else 0.0
 
     # Missing critical fields in trades
@@ -38,7 +50,7 @@ def main():
             missing_by_field.update(missing_fields)
 
     # Exceptions KPIs
-    open_ex = [e for e in exceptions if (e.get("status") or "").strip().lower() in {"open", "investigating"}]
+    open_ex = [e for e in exceptions if normalize_value(e.get("status")).lower() in {"open", "investigating"}]
     ex_by_type = Counter((e.get("exception_type") or "UNKNOWN").strip() for e in exceptions)
     ex_by_sev = Counter((e.get("severity") or "UNKNOWN").strip() for e in exceptions)
     ex_by_owner = Counter((e.get("owner") or "UNKNOWN").strip() for e in exceptions)
