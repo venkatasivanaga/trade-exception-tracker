@@ -18,9 +18,9 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Run validator
+      - name: Run validator (CLI)
         run: |
-          python python/validate.py
+          python python/validate.py --trades data/trades.csv --exceptions data/exceptions.csv --out docs/sample-output/summary.md
 
       - name: Upload summary artifact
         uses: actions/upload-artifact@v4
