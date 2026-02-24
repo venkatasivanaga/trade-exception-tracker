@@ -1,0 +1,6 @@
+﻿exception_id,trade_id,exception_type,severity,field,expected,actual,detected_at,owner,status
+E1001,T0002,NotionalMismatch,HIGH,notional,1500000,1450000,2026-02-01,ops_team,Open
+E1002,T0005,MissingField,MEDIUM,settle_date,2026-02-07,,2026-02-03,ops_team,Open
+E1003,T0008,StatusMismatch,HIGH,trade_status,Matched,Break,2026-02-04,ctrl_team,Open
+E1004,T0010,CurrencyMismatch,LOW,currency,GBP,USD,2026-02-05,ops_team,Investigating
+E1005,T0004,MissingField,LOW,portfolio,PF1,,2026-02-02,ops_team,Resolved
