@@ -3,6 +3,9 @@
 Minimal, audit-friendly tracker for trade lifecycle reconciliation breaks and exception queues.  
 Built to reduce manual investigation time through standardized views, automated refresh, and data-quality checks.
 
+![CI](https://github.com/venkatasivanaga/trade-exception-tracker/actions/workflows/ci.yml/badge.svg)
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+
 ## What it does
 - Tracks trade status, breaks, and exception queues in a structured format
 - Automates refresh using **Power Query**
