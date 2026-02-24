@@ -8,7 +8,6 @@ Minimal, audit-friendly tracker for trade lifecycle reconciliation breaks and ex
 ## Live demo (GitHub Pages)
 https://venkatasivanaga.github.io/trade-exception-tracker/
 
-> If you see a 404, ensure GitHub Pages is enabled from **Settings → Pages → main /docs** and that **Custom domain** is empty.
 
 ## What this project does
 - **Tracks breaks/exceptions** tied to trade records (demo datasets included)
@@ -67,7 +66,7 @@ Includes:
 - GitHub Pages: [`docs/pages.md`](docs/pages.md)
 
 ## Screenshots (optional)
-Add screenshots to `docs/images/` and link them from `docs/power_query.md`.
+screenshots to `docs/images/` and link them from `docs/power_query.md`.
 
 ## Tech stack
 Excel • Power Query • SQL • Python • GitHub Actions • GitHub Pages
