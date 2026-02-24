@@ -26,6 +26,8 @@ Built to reduce manual investigation time through standardized views, automated 
 3. Run validations in `python/` (optional)
 4. Review exception summaries and pivot views
 
+See [`docs/setup.md`](docs/setup.md).
+
 ## Tech
 Excel • Power Query • SQL • Python
 
