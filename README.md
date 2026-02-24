@@ -28,6 +28,10 @@ Built to reduce manual investigation time through standardized views, automated 
 
 See [`docs/setup.md`](docs/setup.md).
 
+## Documentation
+- Setup: [`docs/setup.md`](docs/setup.md)
+- Data dictionary: [`docs/data_dictionary.md`](docs/data_dictionary.md)
+
 ## Tech
 Excel • Power Query • SQL • Python
 
