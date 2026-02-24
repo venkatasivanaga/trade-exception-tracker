@@ -1,47 +1,76 @@
 # Trade Exception Tracker
 
-Minimal, audit-friendly tracker for trade lifecycle reconciliation breaks and exception queues.  
-Built to reduce manual investigation time through standardized views, automated refresh, and data-quality checks.
-
 ![CI](https://github.com/venkatasivanaga/trade-exception-tracker/actions/workflows/ci.yml/badge.svg)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
-## What it does
-- Tracks trade status, breaks, and exception queues in a structured format
-- Automates refresh using **Power Query**
-- Provides pivot-style views by **counterparty / product / date**
-- Runs **SQL/Python checks** to flag mismatched records and missing critical fields
+Minimal, audit-friendly tracker for trade lifecycle reconciliation breaks and exception queues — with demo data, SQL checks, Python validation outputs, and an Excel Power Query walkthrough.
 
-## Impact
-- Reduced manual break investigation time by **~35%**
-- Improved books-and-records consistency via repeatable validations
+## Live demo (GitHub Pages)
+https://venkatasivanaga.github.io/trade-exception-tracker/
 
-## Repository contents (planned)
-- `data/` – sample (anonymized) datasets for demo
-- `excel/` – workbook template & Power Query steps
-- `sql/` – reconciliation & validation queries
-- `python/` – validation scripts + report outputs
-- `docs/` – screenshots and walkthrough
+> If you see a 404, ensure GitHub Pages is enabled from **Settings → Pages → main /docs** and that **Custom domain** is empty.
 
-## How to run (coming next)
-1. Open the Excel template in `excel/`
-2. Refresh Power Query to load sample data
-3. Run validations in `python/` (optional)
-4. Review exception summaries and pivot views
+## What this project does
+- **Tracks breaks/exceptions** tied to trade records (demo datasets included)
+- **Automates validation** via a Python validator that generates reproducible reports
+- **Provides SQL checks** for common reconciliation controls (missing fields, break queue, exception summaries)
+- **Enables Excel operations views** via a Power Query + pivot-table walkthrough
+- **CI pipeline** runs the validator on every push and uploads the sample outputs as artifacts
 
-See [`docs/setup.md`](docs/setup.md).
+## Impact (project story)
+- Reduced manual break investigation time by ~35% by standardizing queue views and automating checks
+- Improved books-and-records consistency through repeatable validations and exception tracking
+
+## Repository structure
+```
+data/                 # anonymized demo inputs (CSV)
+docs/                 # documentation + GitHub Pages site
+  sample-output/      # tracked sample outputs for portfolio
+excel/                # placeholder for workbook/template
+python/               # validator tool
+scripts/              # one-command runners
+sql/                  # reconciliation checks
+```
+
+## Quick start (Windows)
+Run the validator using the one-command script:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\run_validation.ps1
+```
+
+Or run directly with CLI args:
+
+```powershell
+conda run -n orcd python python/validate.py --trades data/trades.csv --exceptions data/exceptions.csv --out docs/sample-output/summary.md
+```
+
+Outputs:
+- `docs/sample-output/summary.md`
+- `docs/sample-output/exceptions_by_type.csv`
+
+## SQL checks
+See: `sql/recon_checks.sql`
+
+Includes:
+- Missing critical fields
+- Trades in **Break** status (queue candidates)
+- Exception volume by type/severity
+- Open queue by owner/status
+- High/medium severity mismatch-style views
 
 ## Documentation
 - Setup: [`docs/setup.md`](docs/setup.md)
 - Data dictionary: [`docs/data_dictionary.md`](docs/data_dictionary.md)
 - Power Query walkthrough: [`docs/power_query.md`](docs/power_query.md)
+- Architecture: [`docs/architecture.md`](docs/architecture.md)
+- GitHub Pages: [`docs/pages.md`](docs/pages.md)
 
-## Tech
-Excel • Power Query • SQL • Python
+## Screenshots (optional)
+Add screenshots to `docs/images/` and link them from `docs/power_query.md`.
 
-## Live demo (GitHub Pages)
-https://venkatasivanaga.github.io/trade-exception-tracker/
-
+## Tech stack
+Excel • Power Query • SQL • Python • GitHub Actions • GitHub Pages
 
 ## License
-MIT
+MIT — see [`LICENSE`](LICENSE).
